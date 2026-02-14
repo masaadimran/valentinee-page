@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Kiswa ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .container {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+  }
+
+  h1 {
+    color: #ff2e63;
+  }
+
+  p {
+    font-size: 18px;
+    color: #444;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.2s;
+  }
+
+  #yesBtn {
+    background-color: #ff2e63;
+    color: white;
+  }
+
+  #noBtn {
+    background-color: #333;
+    color: white;
+    position: absolute;
+  }
+
+  .celebration {
+    display: none;
+    font-size: 28px;
+    margin-top: 20px;
+    color: #ff2e63;
+  }
+
+  .letter {
+    display: none;
+    margin-top: 20px;
+    text-align: left;
+    color: #ff2e63;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  /* Floating Hearts */
+  .heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+    z-index: 1;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-110vh) scale(1.5);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>💖 Kiswa, Will You Be My Valentine? 💖</h1>
+
+  <p>
+    From the moment I met you, everything felt brighter.
+    Your smile, your laugh, your energy — it’s all my favorite thing.
+    So Kiswa… will you be mine this Valentine’s Day? ❤️
+  </p>
+
+  <button id="yesBtn">Yes ❤️</button>
+  <button id="noBtn">No 😢</button>
+
+  <div class="celebration" id="celebration">
+    🎉 SHE SAID YES!!! 🎉<br />
+    I LOVE YOU SO MUCH KISWA ❤️
+  </div>
+
+  <div class="letter" id="letter">
+    <p>Dear Kiswa,</p>
+    <p>
+      From the moment you came into my life, everything felt softer and more beautiful.
+      I won't push you into anything, but my heart only belongs to you, Kiswa.
+      I will learn every gesture that makes you melt, I will learn everything that makes you happy — I'll learn you.
+      Your smile is my favorite view, your voice is my favorite sound, you are the best part of my days.
+      I'm so lucky to know you. Every part of you is beautiful — not just your looks, your personality is so beautiful. You speak so beautifully.
+      If I had a thousand reasons to leave you, I would still find one reason to stay with you.
+      If I had a chance to find someone again in this life, I would find you. I'll find you again, again and again.
+      And I'll love you — I will love you forever, Kiswa.
+    </p>
+  </div>
+</div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const celebration = document.getElementById("celebration");
+  const letter = document.getElementById("letter");
+
+  // Make NO button run away
+  document.addEventListener("mousemove", function (e) {
+    const rect = noBtn.getBoundingClientRect();
+    const distance = Math.hypot(
+      e.clientX - (rect.left + rect.width / 2),
+      e.clientY - (rect.top + rect.height / 2)
+    );
+
+    if (distance < 100) {
+      const newX = Math.random() * (window.innerWidth - 100);
+      const newY = Math.random() * (window.innerHeight - 50);
+      noBtn.style.position = "fixed";
+      noBtn.style.left = newX + "px";
+      noBtn.style.top = newY + "px";
+    }
+  });
+
+  yesBtn.addEventListener("click", function () {
+    celebration.style.display = "block";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+
+    // Show the love letter after 1.5 seconds
+    setTimeout(() => {
+      letter.style.display = "block";
+    }, 1500);
+  });
+
+  // Floating Hearts Generator
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
